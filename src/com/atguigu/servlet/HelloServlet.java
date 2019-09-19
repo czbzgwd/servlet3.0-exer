@@ -10,6 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req,HttpServletResponse resp) throws IOException{
+		System.out.println(Thread.currentThread()+"start...");
+		try {
+			sayHello();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		resp.getWriter().write("hello...");
+		System.out.println(Thread.currentThread()+"end...");
+	}
+	
+	public void sayHello() throws Exception{
+		System.out.println(Thread.currentThread()+"processing...");
+		Thread.sleep(3000);
 	}
 }
